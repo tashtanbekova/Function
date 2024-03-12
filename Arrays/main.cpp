@@ -14,7 +14,7 @@ void main()
 	{
 		cout << "¬ведите минимальное возможное случайное число: "; cin >> minRand;
 		cout << "¬ведите максимальное  возможное  случайное число: "; cin >> maxRand;
-		if (minRand == maxRand)cout << "ѕредела диапозоныне должны совпадать:  " << endl;
+		if (minRand == maxRand)cout << "ѕредела диапозоныне  не должны совпадать:  " << endl;
 	} while (minRand == maxRand);
 	if (maxRand < minRand)
 	{

@@ -7,11 +7,11 @@ int Sum(int a, int b);     //Прототип функции (обьявлени
 int Diff(int a, int b);
 int Prod(int a, int b);
 double Quote(int a, int b);
-long long int Faktorial (int n);
+long long int Factorial (int n);
 double Power (int a, int n);
 
 //#define CALC
-//#define FAKTORIAL
+//#define FACTORIAL
 #define POWER
 
 void main()
@@ -28,11 +28,11 @@ void main()
 	cout << a << "/" << b << "=" << Quote(a,b) << endl;
 #endif // CALC
 
-#ifdef FAKTORIAL
+#ifdef FACTORIAL
 	int n;
 	cout << "Введите число для вычесления факториала: "; cin >> n;
-	cout << Faktorial(n) << endl;
-#endif //FAKTORIAL 
+	cout << Factorial(n) << endl;
+#endif //FACTORIAL 
 #ifdef POWER
 	int a; //основание степени
 	int n; //показатель степени
@@ -64,7 +64,7 @@ void main()
 		//quotıent частное
 		return (double) a / b;
 	}
-	long long int Faktorial (int n)
+	long long int Factorial (int n)
 	{
 		long long int f = 1;
 		for (int i = 1; i <= n; i++)
