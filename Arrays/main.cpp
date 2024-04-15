@@ -1,23 +1,6 @@
-﻿#include <iostream>
-
-using namespace std;
-using std::endl;
-using std::cin;
-using std::cout;
-
-#define tab "\t"
-constexpr auto delimiter = "\n----------------------------------------------\n";
-
-const int ROWS = 3;
-const int COLS = 4;
-
-void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
-void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 100);
-
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
+﻿#include"stdafx.h"
+#include"Constants.h"
+#include"FillRand.h"
 
 void Print(const int arr[], const int n);
 void Print(const double arr[], const int n);
@@ -191,86 +174,6 @@ void main()
 	Print(i_arr_2, ROWS, COLS);
 
 }
-
-void FillRand(int arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = minRand + rand() % (maxRand - minRand);
-	}
-}
-void FillRand(double arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-void FillRand(char arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand)
-	{
-		char buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
-{
-	//Зполнение двухмерного массива случ числами
-
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
-{
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-
 //Вывод массива на экран
 void Print(const int arr[], const int n)
 {
@@ -686,19 +589,44 @@ void Sort(int arr[], const int n)
 }
 void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 {
+	int iterations = 0;
+	int exchanges = 0;
+	//эти два цикла выбирает элемент
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
 		{
+			for (int k = j + 1; k < COLS; k++)
+			{
+				//arr[i][j]=выбранный элемент
+				//arr[i][k]=перебираемый элемент
+				iterations++;
+				if (arr[i][k] < arr[i][j])
+				{
+					int buffer = arr[i][j];
+					arr[i][k] = buffer;
+					arr[i][k] = buffer;
+					exchanges++;
+				}
+			}
+			//Эти два перебирают оставшиеся элементы в поиске минимального значения 
 			for (int k = 0; k < ROWS; k++)
 			{
 				for (int l = 0; l < COLS; l++)
 				{
-					if (arr[i][j] > arr[k][l])
+					for (l = k == i ? j + 1 : 0; l < COLS; l++)
 					{
-						int buffer = arr[i][j];
-						arr[i][j] = arr[k][l];
-						arr[k][l] = buffer;
+						//if (k == i && l == 0)l = j + 1;
+						//if (l == COLS)break;
+						//arr[i][j]=выбранный элемент
+						//arr[k][l]=перебирамей элемент
+						iterations++;
+						if (arr[i][j] > arr[k][l])
+						{
+							int buffer = arr[i][j];
+							arr[i][j] = arr[k][l];
+							arr[k][l] = buffer;
+						}
 					}
 				}
 			}
