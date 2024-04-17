@@ -5,11 +5,17 @@ using namespace std;
 #define tab "\t"
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
-void Print(const int arr[], const int n);
-int Sum(const int arr[], const int n);
-double Avg(const int arr[], const int n);
-int minValue(const int arr[], const int n);
-int maxValue(const int arr[], const int n);
+void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
+template<typename T>
+void Print(const T arr[], const int n);
+template<typename T>
+T Sum(const T arr[], const int n);
+template<typename T>
+double Avg(const T arr[], const int n);
+template<typename T>
+T minValue(const T arr[], const int n);
+template<typename T>
+T maxValue(const T arr[], const int n);
 
 void main()
 {
@@ -32,9 +38,17 @@ void main()
 	cout << "Cреднее-арифметическое элементов числа: " << Avg(arr, n) << endl;
 	cout << "Минимальное значение в массиве: " << minValue(arr, n) << endl;
 	cout << "Максимальное значение в массиве: " << maxValue(arr, n) << endl;
-	int number_of_shifts;
-	cout << "Введите насколько элементов выдвинуть на лево: "; cin >> number_of_shifts;
+	//int number_of_shifts;
+	//cout << "Введите насколько элементов выдвинуть на лево: "; cin >> number_of_shifts;
 
+	const int D_SIZE = 8;
+	double d_arr[D_SIZE];
+	FillRand(d_arr, D_SIZE);
+	Print(d_arr, D_SIZE);
+	cout << "Сумма элементов массива :" << Sum(d_arr, D_SIZE) << endl;
+	cout << "Cреднее-арифметическое элементов числа: " << Avg(d_arr, D_SIZE) << endl;
+	cout << "Минимальное значение в массиве: " << minValue(d_arr, D_SIZE) << endl;
+	cout << "Максимальное значение в массиве: " << maxValue(d_arr, D_SIZE) << endl;
 }
 	
 void FillRand(int arr[], const int n, int minRand, int maxRand)
@@ -50,8 +64,26 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 		arr[i] = minRand + rand() % (maxRand - minRand);
 	}
 }
+void FillRand(double arr[], const int n, int minRand, int maxRand)
+{
+	if (maxRand < minRand)
+	{
+		int buffer = minRand;
+		minRand = maxRand;
+		maxRand = buffer;
+	}
+	minRand *= 100;
+	maxRand *= 100;
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = minRand + rand() % (maxRand - minRand);
+		arr[i] /= 100;
+	}
+}
+
 //Вывод массива на экран
-void Print(const int arr[], const int n)
+template<typename T>
+void Print(const T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -59,31 +91,38 @@ void Print(const int arr[], const int n)
 	}
 	cout << endl;
 }
-
-int Sum(const int arr[], const int n)
+template <typename T>
+T Sum(const T arr[], const int n)
 {
-	int sum = 0;
+	T sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
 	}
 	return sum;
 }
-double Avg(const int arr[], const int n)
+template<typename T>
+double Avg(const T arr[], const int n)
 {
 	return (double) Sum(arr, n) / n;
 }
-int minValue(const int arr[], const int n)
+template<typename T>
+T minValue(const T arr[], const int n)
 {
-	return arr[0];
+	T min = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
 }
-int maxValue(const int arr[], const int n)
+template<typename T>
+T maxValue(const T arr[], const int n)
 {
-	return arr[4];
-}
-int ShiftLeft(const int arr[], const int n)
-{
-	int number_of_shifts;
-
-	return arr[n];	
+	T max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
 }
