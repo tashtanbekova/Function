@@ -79,6 +79,7 @@ void main()
 	cout << "введите насколько элементов сдвинуть направо: "; cin >> number_of_shifts;
 	ShiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
 	Print(i_arr_2, ROWS, COLS);
+	cout << delimiter << endl;
 
 	double d_arr_2[ROWS][COLS];
 	FillRand(d_arr_2, ROWS, COLS);
