@@ -10,7 +10,6 @@ int Sum(const int arr[], const int n);
 double Avg(const int arr[], const int n);
 int minValue(const int arr[], const int n);
 int maxValue(const int arr[], const int n);
-int ShiftLeft(const int arr[], const int n);
 
 void main()
 {
