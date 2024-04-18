@@ -17,6 +17,7 @@ T minValue(const T arr[], const int n);
 template<typename T>
 T maxValue(const T arr[], const int n);
 
+
 void main()
 {
 	setlocale(LC_ALL, "Russian");
