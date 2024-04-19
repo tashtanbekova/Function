@@ -2,8 +2,11 @@
 #include"stdafx.h"
 #include"Constants.h"
 #include"FillRand.h"
+#include"FillRand.cpp"
 #include"Print.h"
+#include"Print.cpp"
 #include"Statistics.h"
+#include"Statistics.cpp"
 
 void main()
 {
