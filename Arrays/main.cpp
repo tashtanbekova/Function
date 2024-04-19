@@ -2,7 +2,6 @@
 #include"stdafx.h"
 #include"Constants.h"
 #include"FillRand.h"
-#include"FillRand.cpp"
 #include"Print.h"
 #include"Print.cpp"
 #include"Statistics.h"
@@ -19,7 +18,7 @@ void main()
 		if (minRand == maxRand)cout << "Предела диапозоныне  не должны совпадать:  " << endl;
 	} while (minRand == maxRand);*/
 
-	FillRand(arr, n);
+	FillRand(arr,n);
 	Print(arr, n);
 	cout << "Сумма элементов массива: " << Sum(arr, n) << endl;
 	cout << "Cреднее-арифметическое элементов числа: " << Avg(arr, n) << endl;
