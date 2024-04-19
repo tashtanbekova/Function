@@ -103,7 +103,7 @@ void main()
 	FillRand(ch_arr_2, ROWS, COLS);
 	Print(ch_arr_2, ROWS, COLS);
 	cout << "Сумма элементов двухмерного массива: " << Sum(ch_arr_2, ROWS, COLS) << endl;;
-	cout << "Cреднее-арифметическое число в двухмерном массиве: " << Avg(ch_arr_2, ROWS, COLS) << endl;
+	cout << "Cредне-арифметическое число в двухмерном массиве: " << Avg(ch_arr_2, ROWS, COLS) << endl;
 	cout << "Минимальное значение в двухмерном массиве: " << minValue(ch_arr_2, ROWS, COLS) << endl;
 	cout << "Максимальное значение в двухмерном массиве: " << maxValue(ch_arr_2, ROWS, COLS) << endl;
 
@@ -124,7 +124,7 @@ void main()
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 
-	cout <<"сумма элементов массива " << Sum(arr, n) << endl;
+	cout <<"Cумма элементов двухмерного массива " << Sum(arr, n) << endl;
 	cout << "Средне-арифметическое: " << Avg(arr, n) << endl;
 	cout << "Минимальное значение: " << minValue(arr, n) << endl;
 	cout << "Максимальное значение: " << maxValue(arr, n) << endl;
